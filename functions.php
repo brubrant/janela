@@ -34,12 +34,19 @@ function janela_setup() {
 	add_theme_support( 'post-thumbnails' );
 	
 	
+	// adiciona o excerpt nas páginas
+	add_post_type_support( 'page', 'excerpt' );
+	
+	
 	// chama os javascripts
 	add_action( 'template_redirect', 'janela_scripts' );
 	
 
 	// This theme supports post formats.
 	add_theme_support( 'post-formats', array( 'aside', 'audio', 'image', 'quote', 'gallery', 'video', 'chat' ) );
+	
+	
+	add_action( 'init', 'janela_taxonomies', 0 );
 
 
 	// torna o tema traduzível
@@ -55,9 +62,31 @@ function janela_setup() {
 
 	// This theme allows users to set a custom background.
 	add_custom_background();
+	
+	
+	update_option( 'image_default_link_type','none' );
+	
+	
+	add_filter( 'user_contactmethods', 'janela_contact_info' );
 
 }
 
+
+function janela_contact_info($contactmethods) {
+    unset($contactmethods['aim']);
+    unset($contactmethods['yim']);
+    unset($contactmethods['jabber']);
+    	$contactmethods['twitter'] = 'Twitter';
+    	$contactmethods['facebook'] = 'Facebook';
+    return $contactmethods;
+}
+
+
+// cria as taxonomias
+function janela_taxonomies() {
+	register_taxonomy( 'series', 'post', array( 'hierarchical' => true, 'label' => 'Séries', 'query_var' => true, 'rewrite' => true ) );
+	register_taxonomy( 'group', 'post', array( 'hierarchical' => true, 'label' => 'Grupos', 'query_var' => true, 'rewrite' => true ) );
+}
 
 
 function janela_scripts() {
