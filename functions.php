@@ -1,49 +1,57 @@
 <?php
 
-// Define as constantes
-define('HOME', get_bloginfo('url'));
-define('THEME', get_stylesheet_directory_uri());
-define('IMAGES', THEME . '/images');
-define('JS', THEME . '/js');
 
-
-include_once 'inc/meta-box-3.2.2.class.php';
-include 'inc/meta-box-usage.php';
-
-include_once 'inc/taxonomy-meta.php';
-include 'inc/taxonomy-meta-usage.php';
-
-
-/**
- * Set the content width based on the theme's design and stylesheet.
- *
- * Used to set the width of images and content. Should be equal to the width the theme
- * is designed for, generally via the style.css stylesheet.
- */
-if ( ! isset( $content_width ) )
-	$content_width = 470;
-
-/**
- * Tell WordPress to run selecta_setup() when the 'after_setup_theme' hook is run.
- */
 add_action( 'after_setup_theme', 'janela_setup' );
-
 function janela_setup() {
 
-	// Add default posts and comments RSS feed links to head
+	// define as constantes
+	define('HOME', get_bloginfo('url'));
+	define('THEME', get_stylesheet_directory_uri());
+	define('IMAGES', THEME . '/images');
+	define('JS', THEME . '/js');
+
+
+	// define o tamanho da área de conteúdo
+	global $content_width;
+	if ( !isset( $content_width ) )
+		$content_width = 470;
+		
+	// chama os scripts das meta boxes para posts
+	include_once 'inc/meta-box-3.2.2.class.php';
+	include 'inc/meta-box-usage.php';
+
+	
+	// chama os scripts das meta boxes para taxonomias
+	include_once 'inc/taxonomy-meta.php';
+	include 'inc/taxonomy-meta-usage.php';
+
+
+	// adiciona links para os feeds
 	add_theme_support( 'automatic-feed-links' );
+	
+	
+	// adiciona suporte a imagens destacadas
+	add_theme_support( 'post-thumbnails' );
+	
+	
+	// chama os javascripts
+	add_action( 'template_redirect', 'janela_scripts' );
+	
 
 	// This theme supports post formats.
 	add_theme_support( 'post-formats', array( 'aside', 'audio', 'image', 'quote', 'gallery', 'video', 'chat' ) );
 
-	// Make theme available for translation
-	// Translations can be filed in the /languages/ directory
-	load_theme_textdomain( 'selecta', TEMPLATEPATH . '/languages' );
 
+	// torna o tema traduzível
+	load_theme_textdomain( 'jecebel', TEMPLATEPATH . '/languages' );
+
+
+	// os arquivos de tradução ficam na pasta /languages/
 	$locale = get_locale();
 	$locale_file = TEMPLATEPATH . "/languages/$locale.php";
 	if ( is_readable( $locale_file ) )
 		require_once( $locale_file );
+
 
 	// This theme allows users to set a custom background.
 	add_custom_background();
@@ -51,63 +59,24 @@ function janela_setup() {
 }
 
 
-// Load scripts.
-function selecta_scripts() {
+
+function janela_scripts() {
+
+	// modal para o menu
+	wp_enqueue_script( 'reveal', JS .'/jquery.reveal.js', array( 'jquery'), '1.0', true );
+
+
+	// player para posts de audio
 	if ( ! is_singular() || ( is_singular() && 'audio' == get_post_format() ) ) {
-		wp_enqueue_script( 'audio-player', get_template_directory_uri() . '/js/audio-player.js', array( 'jquery' ), '20110829' );
+		wp_enqueue_script( 'audio-player', JS . '/audio-player.js', array( 'jquery' ), '20110829', true );
 	}
-	if ( is_front_page() ) {
-		wp_enqueue_script( 'functions-js', get_template_directory_uri().'/js/functions.js', array( 'jquery'), '20110829' );
-	}
+	
+	// comment-reply quando necessario
+	if ( is_singular() && get_option( 'thread_comments' ) && comments_open() )
+		wp_enqueue_script( 'comment-reply' );
 }
-add_action( 'wp_enqueue_scripts', 'selecta_scripts' );
 
 
-/**
- * Register widgetized area and update sidebar with default widgets
- */
-function selecta_widgets_init() {
-	register_sidebar( array (
-		'name' => __( 'Default Sidebar', 'selecta' ),
-		'id' => 'sidebar-1',
-		'description' => __( 'The primary widget area.', 'selecta' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title"><span>',
-		'after_title' => '</span></h3>'
-	) );
-
-	register_sidebar( array (
-		'name' => __( 'First Footer Widget Area', 'selecta' ),
-		'id' => 'sidebar-2',
-		'description' => __( 'The first footer widget area.', 'selecta' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title"><span>',
-		'after_title' => '</span></h3>'
-	) );
-
-	register_sidebar( array (
-		'name' => __( 'Second Footer Widget Area', 'selecta' ),
-		'id' => 'sidebar-3',
-		'description' => __( 'The second footer widget area.', 'selecta' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
-
-	register_sidebar( array (
-		'name' => __( 'Third Footer Widget Area', 'selecta' ),
-		'id' => 'sidebar-4',
-		'description' => __( 'The third footer widget area.', 'selecta' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>'
-	) );
-}
-add_action( 'init', 'selecta_widgets_init' );
 
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
@@ -117,6 +86,7 @@ function selecta_remove_recent_comments_style() {
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 }
 add_action( 'widgets_init', 'selecta_remove_recent_comments_style' );
+
 
 // Add in-head JS block for audio post format.
 function selecta_add_audio_support() {
