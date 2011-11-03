@@ -15,9 +15,9 @@ $meta_sections = array();
 
 // first meta section
 $meta_sections[] = array(
-	'title' => 'Extras',			// section title
+	'title' => 'Extras',					// section title
 	'taxonomies' => array('group'),			// list of taxonomies. Default is array('category', 'post_tag'). Optional
-	'id' => 'first_section',					// ID of each section, will be the option name
+	'id' => 'group_extras',					// ID of each section, will be the option name
 	
 	'fields' => array(							// list of meta fields
 		array(
