@@ -5,14 +5,11 @@
 		<?php the_post(); ?>
 		
 		<div id="archive-header">
+        	<h1><?php single_term_title(); ?></h1>
 		   
             <?php
 			// Procura pelos dados da metabox de grupo
-			$meta = get_option( 'group_extras' );
-			
-			echo 'Visualização dos campos: <br/>';
-			print_r($meta);
-						
+			$meta = get_option( 'group_extras' );					
 
 			// Procura os dados do grupo atual através do slug
 			$group = get_term_by( 'slug', $term, 'group' );
@@ -21,12 +18,24 @@
 			if (!is_array($meta)) $meta = (array) $meta;
 		
 			$meta = isset( $meta[$group->term_id] ) ? $meta[$group->term_id] : array();
+		
+			// Imagem
+			if ( ! empty( $meta['group_logo'] ) ) : 
+				
+				$images = $meta['group_logo'];
+	
+				foreach ( $images as $att ) :
+					$imagesrc = wp_get_attachment_image_src( $att, 'medium' );
+					$imagesrc = $imagesrc[0]; ?>
+				
+					<div class="group-logo">
+                    	<img src="<?php echo $imagesrc; ?>" alt="Logo <?php single_term_title(); ?>" />
+                    </div>
+                <?php
+				endforeach;
+			endif;
 			
-			?>
-            
-			<h1><?php single_cat_title(); ?></h1>
-            
-			<?php
+			
 			// URL
 			if ( ! empty( $meta['group_url'] ) ) : ?>
                 <div class="group-url">
@@ -51,8 +60,11 @@
                 	<?php $member = explode( ',', $meta['group_members'] ); ?>
                     
                 	<ul>
-						<?php foreach ( $member as $member_name ) : ?>
-                        <li><?php echo $member_name; ?></li>
+						<?php foreach ( $member as $member_login ) : ?>
+                        <li>
+                        	<?php $member_data = get_user_by( 'login', $member_login ); print_r($oi);?>
+                            <a href="<?php echo get_author_posts_url( $member_data->ID ); ?>" title="Ver a página de <?php echo $member_data->display_name; ?>"><?php echo get_avatar( $member_data->ID ); ?></a>	
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
