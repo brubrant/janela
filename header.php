@@ -19,21 +19,29 @@
 			<h1 id="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<nav id="access" role="navigation">
 				<a id="menu-videos" href="<?php echo home_url( '/' ); ?>" title="Vários vídeos">Vídeos</a>
-				<a id="menu-series" href="#" title="Nossas séries" data-reveal-id="myModal">Séries</a>
-				<a id="menu-grupos" href="#" title="Tchurma" data-reveal-id="myModals">Grupos</a>
-				<a id="menu-sobre" href="<?php echo get_page_link() ?>" title="Jaenla Errad">Sobre</a>
+				<a id="menu-series" href="#" title="Nossas séries" data-reveal-id="modal-series">Séries</a>
+				<a id="menu-grupos" href="#" title="Tchurma" data-reveal-id="modal-grupos">Grupos</a>
+				<a id="menu-sobre" href="#" title="Jaenla Errad" data-reveal-id="modal-sobre">Sobre</a>
 			</nav><!-- /access -->
 		</header>
 		
-		<div id="myModal" class="reveal-modal">
-			<h1>Séries</h1>
-			<?php wp_tag_cloud( array( 'taxonomy' => 'series', 'number' => 45 ) ); ?>
+		<div id="modal-series" class="reveal-modal">
+			<h1>Lista de séries</h1>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 		
-		<div id="myModals" class="reveal-modal">
-			<h1>Reveal Modal Goodsasdasdness</h1>
-			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+		<div id="modal-grupos" class="reveal-modal">
+			<h1>Lista de grupos</h1>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+		
+		<div id="modal-sobre" class="reveal-modal">
+			<?php $the_query = new WP_Query( 'page_id=49' );
+			while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				
+			<?php the_content(); ?>
+			
+			<?php endwhile; ?>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 

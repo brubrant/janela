@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<section id="content">
+	<section class="content clearfix" id="content-list">
 
 		<?php the_post(); ?>
 		

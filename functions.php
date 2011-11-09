@@ -150,3 +150,28 @@ function janela_share() {
     	</div>
    	<?php
 }
+
+
+/**
+ * Título dos posts thumbnails
+ * Filtra o título da imagem para que ele sempre seja o título do post
+ * Ainda não completamente testado.
+ * TODO Fazer condicionais para saber se a imagem em questão é um post_thumbnail
+ */
+function table_postthumbnails( $attr, $attachment ) {
+		
+	/*
+	Verifica se o título da imagem é igual ao título do post. Se for, mudamos para um novo.
+	Caso sejam diferentes, quer dizer que o atributo 'title' já foi mudado dentro da chamada da função the_post_thumbnail()
+	*/
+	if ( $attachment->post_title == $attr['title'] ) {
+		//echo "TITULOS IGUAIS, MELHOR MUDAR PARA RIIIISOS";
+		
+		// O atributo 'title' recebe o título do post
+		$attr['title'] = get_the_title( $attachment->post_parent );
+	}
+	
+	return $attr;
+	
+}
+add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 );

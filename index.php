@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<section id="content">
+	<section class="content clearfix" id="content-list">
 	
 		<?php get_template_part( 'loop', 'index' ); ?>
 		
