@@ -12,7 +12,7 @@
 	
     		<?php if ( has_post_thumbnail() ) { ?>
         	    <div class="entry-feature">
-        	   		<a href="<?php the_permalink(); ?>" title="<?php printf( __( 'Watch and share &ldquo;%s&rdquo;', 'janela' ), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_post_thumbnail( 'medium' ); ?></a>
+        	   		<a href="<?php the_permalink(); ?>#main" title="<?php printf( __( 'Watch and share &ldquo;%s&rdquo;', 'janela' ), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_post_thumbnail( 'medium' ); ?></a>
         		</div>
         	<?php } ?>
         

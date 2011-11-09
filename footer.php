@@ -9,6 +9,15 @@
 		</div><!-- #colophon -->
 	</footer>
 	
+	<?php if( is_single( ) ) : ?>
+    <script src="<?php echo JS ?>/organictabs.jquery.js"></script>
+    <script>
+        jQuery(function() {
+			jQuery("#entry-credits").organicTabs();
+        });
+    </script>
+    <?php endif; ?>
+	
 	<?php wp_footer(); ?>
 
 </body>

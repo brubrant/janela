@@ -76,14 +76,14 @@ $meta_boxes = array();
 // first meta box
 $meta_boxes[] = array(
 	'id' => 'credits',							// meta box id, unique per meta box
-	'title' => 'Créditos',			// meta box title
-	'pages' => array('post'),	// post types, accept custom post types as well, default is array('post'); optional
+	'title' => 'Créditos',						// meta box title
+	'pages' => array('post'),					// post types, accept custom post types as well, default is array('post'); optional
 	'context' => 'normal',						// where the meta box appear: normal (default), advanced, side; optional
 	'priority' => 'high',						// order of meta box: high (default), low; optional
 
 	'fields' => array(							// list of meta fields
 		array(
-			'name' => 'Elenco',					// field name
+			'name' => 'Elenco',						// field name
 			'desc' => 'Nomes de usuários separados por vírgula',	// field description, optional
 			'id' => $prefix . 'cast',				// field id, i.e. the meta key
 			'type' => 'text',						// text box
