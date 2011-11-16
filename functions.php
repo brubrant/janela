@@ -175,3 +175,28 @@ function table_postthumbnails( $attr, $attachment ) {
 	
 }
 add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 );
+
+
+/**
+ * Lista de séries e grupos
+ * Cria uma lista dos elementos a serem usados nos modais
+ *
+ * @param string $taxonomia A taxonomia a ser pesquisada
+ */
+function janela_lista( $taxonomia = '' ) {
+
+	if ( ! empty ( $taxonomia ) ) {
+		
+		$termos = get_terms( $taxonomia );
+		
+		if ( $termos ) : ?>
+			<ul class="lista-<?php echo $taxonomia; ?>">
+				<?php foreach ( $termos as $termo ) : ?>
+					<li class="item-<?php echo $termo->slug; ?>"><a href="<?php echo get_term_link( $termo->slug, $taxonomia ); ?>"><?php echo $termo->name; ?></a></li>	
+				<?php endforeach; ?>
+			</ul>
+		<?php
+        endif;
+		
+	}
+}

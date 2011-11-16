@@ -28,15 +28,17 @@
 		<div id="modal-series" class="reveal-modal">
 			<h1>Lista de séries</h1>
 			<a class="close-reveal-modal">&#215;</a>
+            <?php janela_lista( 'series' ); ?>
 		</div>
 		
 		<div id="modal-grupos" class="reveal-modal">
 			<h1>Lista de grupos</h1>
-			<a class="close-reveal-modal">&#215;</a>
+			<a class="close-reveal-modal">&#215;</a> 
+            <?php janela_lista( 'group' ); ?>
 		</div>
 		
 		<div id="modal-sobre" class="reveal-modal">
-			<?php $the_query = new WP_Query( 'page_id=49' );
+			<?php $the_query = new WP_Query( 'pagename=sobre' );
 			while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 				
 			<?php the_content(); ?>
