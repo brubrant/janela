@@ -62,7 +62,7 @@
                 	<ul>
 						<?php foreach ( $member as $member_login ) : ?>
                         <li>
-                        	<?php $member_data = get_user_by( 'login', $member_login ); print_r($oi);?>
+                        	<?php $member_data = get_user_by( 'login', $member_login ); ?>
                             <a href="<?php echo get_author_posts_url( $member_data->ID ); ?>" title="Ver a página de <?php echo $member_data->display_name; ?>"><?php echo get_avatar( $member_data->ID ); ?></a>	
                         </li>
                         <?php endforeach; ?>
