@@ -76,8 +76,9 @@ function janela_contact_info($contactmethods) {
     unset($contactmethods['aim']);
     unset($contactmethods['yim']);
     unset($contactmethods['jabber']);
-    	$contactmethods['twitter'] = 'Twitter';
-    	$contactmethods['facebook'] = 'Facebook';
+	$contactmethods['twitter'] = 'Twitter';
+	$contactmethods['facebook'] = 'Facebook';
+	
     return $contactmethods;
 }
 

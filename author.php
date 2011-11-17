@@ -2,35 +2,42 @@
 
 	<section id="content">
 
-		<?php the_post(); ?>
-		
-		<div id="archive-header">
-				<h1 class="single-title">
-					<?php
-						if ( is_day() ) :
-							printf( __( 'Daily Archives: %s', 'selecta' ), '<span>' . get_the_date() . '</span>' );
-						elseif ( is_month() ) :
-							printf( __( 'Monthly Archives: %s', 'selecta' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
-						elseif ( is_year() ) :
-							printf( __( 'Yearly Archives: %s', 'selecta' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
-						elseif ( is_category() ) :
-							printf( __( 'Category Archives: %s', 'selecta' ), '<span>' . single_cat_title( '', false ) . '</span>' );
-						elseif ( is_author() ) :
-							printf( __( 'Author Archives: %s', 'selecta' ), '<span><a class="url fn n" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
-						elseif ( is_tag() ) :
-							printf( __( 'Tag Archives: %s', 'selecta' ), '<span>' . single_tag_title( '', false ) . '</span>' );
-						else :
-							_e( 'Archives', 'selecta' );
-						endif;
-					?>
-				</h1>
-     
+		<?php 
+            
+        $member = get_userdata( get_query_var( 'author' ) );
+        
+        print_r($member);
+        ?>
+            
+        <div class="member-avatar"><?php echo get_avatar( $member->ID, 256, '', 'avatar-' . $member->display_name ); ?></div>
+        
+        <h1 class="member-name"><?php echo $member->display_name; ?></h1>
+        
+		<?php if ( ! empty ( $member->user_url ) ) : ?>
+        <div class="member-url"><?php echo $member->user_url; ?></div>
+        <?php endif; ?>
+        
+		<?php if ( ! empty ( $member->description ) ) : ?>
+        <div class="member-description"><?php echo $member->description; ?></div>
+        <?php endif; ?>
+        
+        <?php if ( $member->facebook OR $member->twitter != '' ) : ?>
+        <div class="member-social">
+        	<ul>
+				<?php if ( ! empty ( $member->facebook ) ) : ?>
+                <li class="member-facebook"><?php echo $member->facebook; ?></li>
+                <?php endif; ?>
                 
-		</div><!-- /archive-header -->
+                <?php if ( ! empty ( $member->twitter ) ) : ?>
+                <li class="member-twitter"><?php echo $member->twitter; ?></li>
+                <?php endif; ?>
+            </ul>
+		</div><!-- .member-social -->
+        <?php endif; ?>
+     
+
 		
-		<?php rewind_posts(); ?>
-		
-		<?php get_template_part( 'loop', 'archive' ); ?>
+		<?php //get_template_part( 'loop', 'archive' ); ?>
 
 	</section><!-- /content -->
 
