@@ -175,7 +175,6 @@ function table_postthumbnails( $attr, $attachment ) {
 	return $attr;
 	
 }
-<<<<<<< HEAD
 add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 );
 
 
@@ -202,8 +201,6 @@ function janela_lista( $taxonomia = '' ) {
 		
 	}
 }
-=======
 add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 ); ?>
 
 
->>>>>>> ERROR
