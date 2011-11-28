@@ -26,7 +26,6 @@
 		</header>
 		
 		<div id="modal-series" class="reveal-modal">
-			<h1>Lista de séries</h1>
 			<a class="close-reveal-modal">&#215;</a>
             <?php janela_lista( 'series' ); ?>
 		</div>

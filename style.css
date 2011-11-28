@@ -102,6 +102,18 @@ header {
 	font-weight: 300;
 }
 
+.lista-series {
+	font: 700 18px/1 museo-slab;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+.lista-series li {
+	display: inline;
+	float: left;
+	list-style: none;
+}
+
 #main {
 	background: #fff;
 	-moz-border-radius: 1px;
@@ -189,16 +201,61 @@ header {
 #entry-credits {
 	float: left;
 	margin: 0 20px;
-	height: 600px;
+	min-height: 600px;
 	width: 420px
+}
+
+#entry-credits .nav {
+	font: 700 14px/1 museo-slab;
+	list-style: none;
+	overflow: hidden;
+	padding: 0;
+}
+#entry-credits .nav a {
+	color: #111;
+}
+#entry-credits .nav-title {
+	float: left;
+	font-size: 18px;
+}
+#entry-credits .nav-full {
+	float: right;
+}
+#entry-credits .nav-full a {
+	background: #222;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	color: #fff;
+	display: inline-block;
+	display: -moz-inline-stack;
+	padding: 4px 8px;
+	zoom: 1;
+	*display: inline;
+}
+#entry-credits a.current {
+	color: #fe57a1;
 }
 
 .entry-share {
 	background: yellow;
 	float: left;
-	margin-right: -10px;
-	padding: 10px;
-	width: 210px
+	padding: 20px 10px;
+	margin-top: -20px;
+	width: 200px
+}
+
+.share-button {
+	display: inline;
+	float: left;
+	margin-left: 10px;
+}
+.share-shortlink {
+	background: yellow;
+	border: none;
+	clear: both;
+	margin: 10px 10px 0 10px;
+	width: auto;
 }
 
 footer {

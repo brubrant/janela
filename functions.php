@@ -144,10 +144,10 @@ add_action( 'wp_head', 'selecta_add_audio_support' );
 function janela_share() {
 	global $post; ?>
 		<div class="entry-share cf">
-    	    <div class="share-twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-text="<?php the_title_attribute(); ?>" data-count="horizontal">Tweet</a><script src="http://platform.twitter.com/widgets.js"></script></div>
-    	    <div class="share-plusone"><g:plusone size="medium" count="true" href="<?php the_permalink(); ?>"></g:plusone><script>window.___gcfg = { lang: 'pt-BR' }; (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();</script></div>
-    	    <div class="share-facebook"><div id="fb-root"></div><script src="http://connect.facebook.net/pt_BR/all.js#appId=236523979728704&amp;xfbml=1"></script><fb:like href="<?php the_permalink() ?>" send="false" layout="button_count" width="90" show_faces="false" font="lucida grande"></fb:like></div>
-    	    <input class="share-shortlink" type="text" value="<?php echo wp_get_shortlink(get_the_ID()); ?>" onclick="this.focus(); this.select();" />
+    	    <div class="share-button share-facebook"><div id="fb-root"></div><script src="http://connect.facebook.net/pt_BR/all.js#appId=293812317326286&amp;xfbml=1"></script><fb:like href="<?php the_permalink() ?>" send="false" layout="box_count" width="55" show_faces="false" font="lucida grande"></fb:like></div>
+    	    <div class="share-button share-twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>" data-text="<?php the_title_attribute(); ?>" data-count="vertical">Tweet</a><script src="http://platform.twitter.com/widgets.js"></script></div>
+    	    <div class="share-button share-plusone"><div class="g-plusone" data-size="tall" data-href="<?php the_permalink(); ?>"></div><script type="text/javascript">window.___gcfg = {lang: 'pt-BR'};(function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();</script></div>
+    	    <input class="share-shortlink" type="text" value="<?php echo wp_get_shortlink(get_the_ID()); ?>" onclick="this.focus(); this.select();" readonly="readonly" />
     	</div>
    	<?php
 }
@@ -201,6 +201,29 @@ function janela_lista( $taxonomia = '' ) {
 		
 	}
 }
-add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 ); ?>
+add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 );
+
+
+add_filter('get_comments_number', 'comment_count', 0);
+function comment_count( $count ) {
+
+if ( ! is_admin() ) {
+
+global $id;
+
+$comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
+
+return count($comments_by_type['comment']);
+
+} else {
+
+return $count;
+
+}
+
+}
+
+
+?>
 
 

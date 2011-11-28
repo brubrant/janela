@@ -12,7 +12,7 @@
 			<div id="entry-credits">
 				<ul class="nav">
             	   	<li class="nav-title"><a href="#credit-main" class="current">Creditos</a></li>
-            	   	<li><a href="#credit-full">Completo</a></li>
+            	   	<li class="nav-full"><a href="#credit-full">Completo</a></li>
             	</ul>
             	<div id="credit-main">
 			    	<div class="entry-cast">
@@ -51,7 +51,6 @@
 			    </div>
 			    <div id="credit-full" class="hide">
 			    	<?php $credits = get_post_meta( $post->ID, 'janela_bio', $single = true ); ?>
-			    	<h3>Créditos</h3>
 			    	<?php echo $credits ?>
 			    </div>
 			    
