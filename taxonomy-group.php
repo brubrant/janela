@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<section id="content">
+	<section class="content clearfix" id="content-list">
 
 		<?php the_post(); ?>
 		
@@ -39,7 +39,7 @@
 			// URL
 			if ( ! empty( $meta['group_url'] ) ) : ?>
                 <div class="group-url">
-                	<a href="#"><?php echo $meta['group_url']; ?></a>
+                	<a href="<?php echo $meta['group_url']; ?>">Site</a>
                 </div>
             <?php
             endif;

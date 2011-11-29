@@ -16,9 +16,8 @@
 
 	<body <?php body_class(); ?>>
 		<header class="clearfix">
-			<h1 id="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<h1 id="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">Janela errada<small>Beta</small></a></h1>
 			<nav id="access" role="navigation">
-				<a id="menu-videos" href="<?php echo home_url( '/' ); ?>" title="Vários vídeos">Vídeos</a>
 				<a id="menu-series" href="#" title="Nossas séries" data-reveal-id="modal-series">Séries</a>
 				<a id="menu-grupos" href="#" title="Tchurma" data-reveal-id="modal-grupos">Grupos</a>
 				<a id="menu-sobre" href="#" title="Jaenla Errad" data-reveal-id="modal-sobre">Sobre</a>
@@ -26,12 +25,13 @@
 		</header>
 		
 		<div id="modal-series" class="reveal-modal">
-			<a class="close-reveal-modal">&#215;</a>
+			<h3 class="lista-title">As melhores séries você só encontra aqui</h3>			
             <?php janela_lista( 'series' ); ?>
+            <a class="close-reveal-modal">&#215;</a>
 		</div>
 		
 		<div id="modal-grupos" class="reveal-modal">
-			<h1>Lista de grupos</h1>
+			<h3 class="lista-title">Os bons são maioria</h3>			
 			<a class="close-reveal-modal">&#215;</a> 
             <?php janela_lista( 'group' ); ?>
 		</div>
@@ -46,4 +46,4 @@
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 
-		<div id="main">
+		<section id="main">
