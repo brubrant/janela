@@ -192,12 +192,15 @@ add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 
 		//echo $video_info['provider'];
 		
 		if ( $video_info['provider'] == 'vimeo' ) {
-			$vimeo = unserialize( file_get_contents( 'http://vimeo.com/api/v2/video/' . $video_info['id'] . '.php' ) );
+			$vimeo = simplexml_load_file( 'http://vimeo.com/api/v2/video/' . $video_info['id'] . '.xml' );
+			$vimeo = $vimeo->video;
+			
+			//var_dump($vimeo);
 			
 			//var_dump($vimeo);
 			//echo $vimeo[0]['thumbnail_large'];
 			
-			echo '<img class="thumbnail-' . $video_info['provider'] . '" src="' . $vimeo[0]['thumbnail_large'] . '"/>';
+			echo '<img class="thumbnail-' . $video_info['provider'] . '" src="' . $vimeo->thumbnail_large . '"/>';
 		}
 		elseif ( $video_info['provider'] == 'youtube' ) {
 			//var_dump($youtube);
