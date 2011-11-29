@@ -10,7 +10,6 @@
 
 	<?php if ( ! is_single() ) : ?>
 		<div class="entry-header">
-
 			<?php if ( get_the_title() != '' ) : ?>
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php echo esc_attr( sprintf( __( 'Permanent Link to %s', 'selecta' ), the_title_attribute( 'echo=0' ) ) ); ?>"><?php the_title(); ?></a></h2>
 			<?php else: ?>

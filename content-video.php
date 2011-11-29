@@ -9,8 +9,19 @@
 			</div>
 			
 		<?php else : ?>
+        
+        	<?php
+			
+			//janela_youtube_id ( get_the_content() );
+			
+			parseVideoURL( get_the_content() );
+			
+			//var_dump($video);
+			
+			?>
 	
     		<?php if ( has_post_thumbnail() ) { ?>
+            
         	    <div class="entry-feature">
         	   		<a href="<?php the_permalink(); ?>#main" title="<?php printf( __( 'Watch and share &ldquo;%s&rdquo;', 'janela' ), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_post_thumbnail( 'medium' ); ?></a>
         		</div>

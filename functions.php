@@ -179,6 +179,59 @@ add_filter( 'wp_get_attachment_image_attributes', 'table_postthumbnails', 99, 2 
 
 
 /**
+ * YouTube ID
+ * Retorna a ID do vídeo do YouTube para ser usada
+ */
+ 
+function janela_youtube_id( $url = '' ) {
+	//$url = "http://www.youtube.com/watch?v=C4kxS1ksqtw&feature=relate";
+	
+	parse_str( parse_url( $url, PHP_URL_QUERY ), $youtube_array );
+	
+	echo $youtube_array['v'];    
+}
+
+function parseVideoURL( $url ) {
+	
+	echo "OI";
+
+			
+	if ( preg_match("/http:\/\/(?:www.)?(vimeo|youtube).com\/(?:watch\?v=)?(.*?)(?:\z|&)/", $url, $match ) ) {
+					
+		$video_info = array( 'provider' => $match[1], 'id' => $match[2], 'url' => $match[0] );
+		
+		echo $video_info['provider'];
+		
+		if ( $video_info['provider'] == 'vimeo' ) {
+			$vimeo = unserialize( file_get_contents( 'http://vimeo.com/api/v2/video/' . $video_info['id'] . '.php' ) );
+			
+			//var_dump($vimeo);
+			echo $vimeo[0]['thumbnail_large'];
+			
+			echo '<img src="' . $vimeo[0]['thumbnail_large'] . '"/>';
+		}
+		elseif ( $video_info['provider'] == 'youtube' ) {
+			//var_dump($youtube);
+			//http://i.ytimg.com/vi/Q7DbozmH8rk/0.jpg
+			
+			echo '<img src="http://i.ytimg.com/vi/' . $video_info['id'] . '/0.jpg" />';
+		}
+	}
+	else
+		return false;
+	
+
+    /*
+	return {
+        provider : RegExp.$1,
+        id : RegExp.$1 == 'vimeo' ? RegExp.$2 : RegExp.$3
+    }
+	*/
+}
+ 
+
+
+/**
  * Lista de séries e grupos
  * Cria uma lista dos elementos a serem usados nos modais
  *
