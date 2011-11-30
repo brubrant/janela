@@ -1,11 +1,4 @@
-<?php
-/**
- * The portion of the loop that shows the "standard" post format.
- *
- * @package WordPress
- * @subpackage Selecta
- */
-?>
+
 <div id="post-<?php the_ID(); ?>" <?php post_class( 'post-wrapper clearfix' ); ?>>
 
 	<?php if ( ! is_single() ) : ?>

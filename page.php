@@ -1,10 +1,4 @@
-<?php
-/**
- * The template for Pages.
- * @package WordPress
- * @subpackage Selecta
- */
-get_header(); ?>
+<?php get_header(); ?>
 
 <?php the_post(); ?>
 
