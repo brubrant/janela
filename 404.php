@@ -1,33 +1,18 @@
-<?php
-/**
- * The 404 template
- * @package WordPress
- * @subpackage Selecta
- */
-get_header(); ?>
+<?php get_header(); ?>
 
-<div id="single-header">
-	<div class="single-title-wrap">
-		<h1 class="single-title"><?php _e( 'Not found', 'selecta' ); ?></h1>
-	</div><!-- .single-title-wrap" -->
-</div><!-- #single-header-->
+    <section class="content clearfix">
+    	<article id="error-404" <?php post_class(); ?>>
+        
+        	<h2 class="entry-title">EROR</h2>
+    
+            <div class="hentry-wrap">
+            
+                <div class="entry-content">
+                    <p>Pane no sistema alguem me desconfigurouuuuu</p>
+                </div>	
+			</div>
 
-<div id="main" class="clearfix">
-	<div id="content" role="main">
-		<div id="post-0" class="post-wrapper clearfix error404 not-found">
-
-			<div class="entry-wrapper clearfix">
-				<div class="entry">
-					<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'selecta' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry -->
-			</div><!-- .entry-wrapper -->
-
-		</div><!-- #post-0 -->
-	</div><!-- #content -->
-
-	<?php get_sidebar(); ?>
-
-</div><!-- #main -->
+    	</article><!-- .error-404 -->
+    </section><!-- #main -->
 
 <?php get_footer(); ?>
