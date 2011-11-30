@@ -1,36 +1,38 @@
 <?php get_header(); ?>
-
-	<section id="content">
-
+	
+	<header class="archive-header" id="member-header">
 		<?php $member = get_userdata( get_query_var( 'author' ) ); ?>
-            
-        <div class="member-avatar"><?php echo get_avatar( $member->ID, 256, '', 'avatar-' . $member->display_name ); ?></div>
-        
-        <h1 class="member-name"><?php echo $member->display_name; ?></h1>
-        
-		<?php if ( ! empty ( $member->user_url ) ) : ?>
-        <div class="member-url"><a href="<?php echo esc_url( $member->user_url ); ?>" title=""><?php echo $member->user_url; ?></a></div>
-        <?php endif; ?>
-        
-		<?php if ( ! empty ( $member->description ) ) : ?>
-        <div class="member-description"><?php echo $member->description; ?></div>
-        <?php endif; ?>
-        
-        <?php if ( $member->facebook OR $member->twitter != '' ) : ?>
-        <div class="member-social">
-        	<ul>
-				<?php if ( ! empty ( $member->facebook ) ) : ?>
-                <li class="member-facebook"><a href="<?php echo esc_url( $member->facebook ); ?>" title=""><?php echo $member->facebook; ?></a></li>
-                <?php endif; ?>
-                
-                <?php if ( ! empty ( $member->twitter ) ) : ?>
-                <li class="member-twitter"><a href="<?php echo esc_url( $member->twitter ); ?>" title=""><?php echo $member->twitter; ?></a></li>
-                <?php endif; ?>
-            </ul>
-		</div><!-- .member-social -->
-        <?php endif; ?>
-     
 
+   		<?php echo get_avatar( $member->ID, 256, '', 'avatar-' . $member->display_name ); ?>
+   		
+   		<div class="member-info">
+    	
+    		<h2 class="header-title" id="member-title"><?php echo $member->display_name; ?></h2>
+    		
+			<?php if ( ! empty ( $member->description ) ) : ?>
+    			<div class="member-description"><?php echo $member->description; ?></div>
+    		<?php endif; ?>
+    		
+    		<?php if ( $member->user_url OR $member->facebook OR $member->twitter != '' ) : ?>
+    			<ul class="member-social">
+    			    <?php if ( ! empty ( $member->user_url ) ) : ?>
+    			    <li class="member-url"><a href="<?php echo esc_url( $member->user_url ); ?>" title="Site pessoal"><?php echo $member->user_url; ?></a></li>
+    			    <?php endif; ?>
+    			    
+				    <?php if ( ! empty ( $member->facebook ) ) : ?>
+    			    <li class="member-facebook"><a href="http://facebook.com/<?php echo $member->facebook; ?>" title="Me add">/<?php echo $member->facebook; ?></a></li>
+    			    <?php endif; ?>
+    			    
+    			    <?php if ( ! empty ( $member->twitter ) ) : ?>
+    			    <li class="member-twitter"><a href="http://twitter.com/<?php echo $member->twitter; ?>" title="Me segue">@<?php echo $member->twitter; ?></a></li>
+    			    <?php endif; ?>
+    			</ul>
+    		<?php endif; ?>
+    		
+    	</div><!-- /member-info -->
+	</header><!-- /member-header -->
+
+	<section class="content">
 		
 		<?php //get_template_part( 'loop', 'archive' ); ?>
 

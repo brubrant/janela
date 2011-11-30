@@ -1,5 +1,5 @@
 	
-	</section><!-- /main -->
+	</div><!-- /main -->
 	
 	<footer>
 		<div id="colophon" role="contentinfo">

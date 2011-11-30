@@ -27,7 +27,7 @@
     	<?php else : ?>
     		<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __( 'Watch and share &ldquo;%s&rdquo;', 'janela' ), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
     	<?php endif; ?>
-    	<?php echo get_the_term_list( $post->ID, 'group', '<span class="entry-group">', ', ', '</span>' ); ?>
+    	<?php if ( !is_tax() ) echo get_the_term_list( $post->ID, 'group', '<span class="entry-group">', ', ', '</span>' ); ?>
     </div>
     
 </article><!-- /video-<?php the_ID(); ?> -->

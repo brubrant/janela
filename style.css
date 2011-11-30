@@ -75,7 +75,7 @@ body {
 	font-family: museo-sans, sans-serif
 }
 
-header {
+#pinhead {
 	margin: 0 auto;
 	text-transform: lowercase;
 	padding: 40px 0 20px 0;
@@ -89,11 +89,11 @@ header {
 	position: relative;
 }
 #site-title a {
-	color: #fff;
+	color: yellow;
 	text-shadow: 1px 1px 2px rgba(0,0,0,.7);
 }
 #site-title a:hover {
-	color: yellow;
+	color: #fff;
 	-o-transition: all .1s linear;
 	-moz-transition: all .1s linear;
 	-webkit-transition: all .1s linear;
@@ -243,6 +243,12 @@ header {
 	position: relative;
 	width: 470px;
 }
+.entry-feature .thumbnail-youtube {
+	left: 0;
+	position: absolute;
+	top: -45px;
+}
+
 .entry-play {
     background: url(images/play.png) no-repeat;
     height: 72px;
@@ -255,7 +261,7 @@ header {
     top: 50%;
     width: 72px;
 }
-.entry-feature:hover .wp-post-image {
+.entry-feature:hover img {
 	opacity: .5;
 	-o-transition: all .1s linear;
 	-moz-transition: all .1s linear;
@@ -358,6 +364,54 @@ header {
 	clear: both;
 	margin: 10px 10px 0 10px;
 	width: auto;
+}
+
+.archive-header {
+	background: #2a2a2a url(images/bg-hentry.png);
+	margin: -20px -20px 20px -20px;
+	overflow: hidden;
+	padding: 20px;
+	width: 960px;
+}
+
+.header-title {
+	color: yellow;
+	font: 700 36px/1 museo-slab;
+	margin: 0;
+}
+
+.group-description {
+	color: #fff;
+	text-shadow: 1px 1px 2px rgba(0,0,0,.9);
+}
+
+#member-header .photo {
+	background: #fff;
+	-moz-box-shadow: 0 0 6px rgba(0,0,0,.9);
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,.9);
+	box-shadow: 0 0 6px rgba(0,0,0,.9);
+	float: right;
+	padding: 10px;
+}
+
+.member-info {
+	color: #fff;	
+}
+
+.member-description {
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.member-social {
+	margin: 20px 0 0 0;
+	overflow: hidden;
+	padding: 0;
+}
+.member-social li {
+	display: inline;
+	float: left;
+	margin-right: 10px;
 }
 
 footer {

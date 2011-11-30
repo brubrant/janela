@@ -15,7 +15,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header class="clearfix">
+		<header id="pinhead" class="clearfix">
 			<h1 id="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">Janela errada<small>Beta</small></a></h1>
 			<nav id="access" role="navigation">
 				<a id="menu-series" href="#" title="Nossas séries" data-reveal-id="modal-series">Séries</a>
@@ -46,4 +46,4 @@
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 
-		<section id="main">
+		<div id="main">
