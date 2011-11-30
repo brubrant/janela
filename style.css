@@ -69,6 +69,18 @@ td { vertical-align: top; }
 /* ==|== primary styles =====================================================
    Author: 
    ========================================================================== */
+   
+@font-face {
+    font-family: 'WebSymbolsRegular';
+    src: url('inc/fonts/websymbols-regular-webfont.eot');
+    src: url('inc/fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('inc/fonts/websymbols-regular-webfont.woff') format('woff'),
+         url('inc/fonts/websymbols-regular-webfont.ttf') format('truetype'),
+         url('inc/fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 body {
 	background: #dedede;
@@ -377,7 +389,7 @@ body {
 .header-title {
 	color: yellow;
 	font: 700 36px/1 museo-slab;
-	margin: 0;
+	margin: 10px 0 0 0;
 }
 
 .group-description {
@@ -404,6 +416,7 @@ body {
 }
 
 .member-social {
+	font: normal 24px/28px WebSymbolsRegular,sans-serif;
 	margin: 20px 0 0 0;
 	overflow: hidden;
 	padding: 0;
@@ -413,7 +426,23 @@ body {
 	float: left;
 	margin-right: 10px;
 }
-
+.member-social a {
+	color: #fff;
+}
+.member-social:hover li {
+	opacity: .5;
+	-o-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+}
+.member-social li:hover {
+	opacity: 1;
+	-o-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+}
 footer {
 	margin: 20px auto;
 	text-align: center;

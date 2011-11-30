@@ -16,15 +16,15 @@
     		<?php if ( $member->user_url OR $member->facebook OR $member->twitter != '' ) : ?>
     			<ul class="member-social">
     			    <?php if ( ! empty ( $member->user_url ) ) : ?>
-    			    <li class="member-url"><a href="<?php echo esc_url( $member->user_url ); ?>" title="Site pessoal"><?php echo $member->user_url; ?></a></li>
+    			    <li class="member-url"><a href="<?php echo esc_url( $member->user_url ); ?>" title="<?php echo $member->user_url; ?>">K</a></li>
     			    <?php endif; ?>
     			    
 				    <?php if ( ! empty ( $member->facebook ) ) : ?>
-    			    <li class="member-facebook"><a href="http://facebook.com/<?php echo $member->facebook; ?>" title="Me add">/<?php echo $member->facebook; ?></a></li>
+    			    <li class="member-facebook"><a href="http://facebook.com/<?php echo $member->facebook; ?>" title="/<?php echo $member->facebook; ?>">f</a></li>
     			    <?php endif; ?>
     			    
     			    <?php if ( ! empty ( $member->twitter ) ) : ?>
-    			    <li class="member-twitter"><a href="http://twitter.com/<?php echo $member->twitter; ?>" title="Me segue">@<?php echo $member->twitter; ?></a></li>
+    			    <li class="member-twitter"><a href="http://twitter.com/<?php echo $member->twitter; ?>" title="@<?php echo $member->twitter; ?>">t</a></li>
     			    <?php endif; ?>
     			</ul>
     		<?php endif; ?>
