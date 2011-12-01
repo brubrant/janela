@@ -12,7 +12,10 @@
 			<div id="entry-credits">
 				<ul class="nav">
             	   	<li class="nav-title"><a href="#credit-main" class="current">Creditos</a></li>
+                    <?php $credits_full = get_post_meta( $post->ID, 'janela_bio', $single = true ); ?>
+                    <?php if ( ! empty ( $credits_full ) ) : ?>
             	   	<li class="nav-full"><a href="#credit-full">Completo</a></li>
+                    <?php endif; ?>
             	</ul>
             	<div id="credit-main">
 			    	<div class="entry-cast">
@@ -49,10 +52,11 @@
 						<?php endif; ?>
 			    	</div>
 			    </div>
+                <?php if ( ! empty ( $credits_full ) ) : ?>
 			    <div id="credit-full" class="hide">
-			    	<?php $credits = get_post_meta( $post->ID, 'janela_bio', $single = true ); ?>
-			    	<?php echo $credits ?>
+			    	<?php echo $credits_full; ?>
 			    </div>
+                <?php endif; ?>
 			    
 			</div><!-- /entry-credits -->
 			
