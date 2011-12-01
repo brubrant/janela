@@ -85,8 +85,8 @@ function janela_contact_info($contactmethods) {
 
 // cria as taxonomias
 function janela_taxonomies() {
-	register_taxonomy( 'series', 'post', array( 'hierarchical' => true, 'label' => 'Séries', 'query_var' => true, 'rewrite' => true ) );
-	register_taxonomy( 'group', 'post', array( 'hierarchical' => true, 'label' => 'Grupos', 'query_var' => true, 'rewrite' => true ) );
+	register_taxonomy( 'series', 'post', array( 'hierarchical' => true, 'label' => 'Séries', 'query_var' => true, 'rewrite' => array( 'with_front' => false ) ) );
+	register_taxonomy( 'group', 'post', array( 'hierarchical' => true, 'label' => 'Grupos', 'query_var' => true, 'rewrite' => array( 'with_front' => false ) ) );
 }
 
 

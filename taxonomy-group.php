@@ -72,6 +72,7 @@
 
 	<section class="content clearfix" id="content-list">
 		
+		<?php query_posts( $query_string . '&posts_per_page=-1' ); ?>
 		<?php get_template_part( 'loop', 'archive' ); ?>
 
 	</section><!-- /content -->
