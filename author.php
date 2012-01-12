@@ -34,7 +34,35 @@
 
 	<section class="content">
 		
-		<?php //get_template_part( 'loop', 'archive' ); ?>
+		<?php
+		
+		// Altera a query do autor para que seja usado o valor do custom field
+		query_posts( 
+			array(
+				'meta_query' => array (
+					'relation' => 'OR',
+					array(
+						'key' => 'janela_cast',
+						'value' => $member->user_login,
+						'compare' => 'LIKE'
+					),
+					array(
+						'key' => 'janela_directed',
+						'value' => $member->user_login,
+						'compare' => 'LIKE'
+					),
+					array(
+						'key' => 'janela_wrote',
+						'value' => $member->user_login,
+						'compare' => 'LIKE'
+					)
+				)
+			)
+		);
+		
+		get_template_part( 'loop', 'archive' );
+		
+		?>
 
 	</section><!-- /content -->
 
