@@ -32,7 +32,7 @@
     	</div><!-- /member-info -->
 	</header><!-- /member-header -->
 
-	<section class="content">
+	<section class="content clearfix" id="content-list">
 		
 		<?php
 		
